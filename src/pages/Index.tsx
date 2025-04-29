@@ -17,7 +17,7 @@ const Index = () => {
         </div>
         <div className="relative container h-full flex flex-col justify-center">
           <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
-            FASHION WEEK <span className="text-primary">2025</span>
+            FASHION IN MOTION <span className="text-primary">2025</span>
           </h1>
           <p className="text-xl text-white/80 max-w-2xl mb-8">
             Эксклюзивное модное событие года, где талантливые дизайнеры представят свои новые коллекции
@@ -34,7 +34,7 @@ const Index = () => {
           <div>
             <h2 className="text-3xl font-bold mb-6">О мероприятии</h2>
             <p className="text-lg mb-4">
-              Fashion Week 2025 — это масштабное событие, объединяющее именитых и начинающих дизайнеров, модельеров, стилистов и всех ценителей высокой моды.
+              Fashion in Motion 2025 — это масштабное событие, объединяющее именитых и начинающих дизайнеров, модельеров, стилистов и всех ценителей высокой моды.
             </p>
             <p className="text-lg mb-4">
               В течение недели гости смогут увидеть показы новых коллекций, посетить мастер-классы, встретиться с экспертами индустрии и погрузиться в уникальную атмосферу моды.
@@ -107,7 +107,7 @@ const Index = () => {
       <section className="py-16 container text-center">
         <h2 className="text-3xl font-bold mb-6">Станьте частью модного события года</h2>
         <p className="text-lg max-w-2xl mx-auto mb-8">
-          Не упустите возможность стать участником или гостем Fashion Week 2025 — заполните анкету регистрации прямо сейчас!
+          Не упустите возможность стать участником или гостем Fashion in Motion 2025 — заполните анкету регистрации прямо сейчас!
         </p>
         <Button size="lg" asChild>
           <Link to="/registration">Перейти к регистрации</Link>
@@ -118,7 +118,7 @@ const Index = () => {
       <footer className="bg-muted py-8">
         <div className="container text-center">
           <p className="text-muted-foreground">
-            &copy; 2025 Fashion Week. Все права защищены.
+            &copy; 2025 Fashion in Motion. Все права защищены.
           </p>
         </div>
       </footer>

@@ -27,7 +27,7 @@ const Registration = () => {
           ) : (
             <>
               <div className="text-center mb-8">
-                <h1 className="text-3xl font-bold mb-2">Регистрация на Fashion Week 2025</h1>
+                <h1 className="text-3xl font-bold mb-2">Регистрация на Fashion in Motion 2025</h1>
                 <p className="text-muted-foreground">
                   Заполните форму ниже, чтобы стать участником модного события года
                 </p>
