@@ -8,6 +8,7 @@ import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "@/components/ui/use-toast";
+import { Checkbox } from "@/components/ui/checkbox";
 import ModelFields from "./participant-fields/ModelFields";
 import DesignerFields from "./participant-fields/DesignerFields";
 
@@ -23,6 +24,14 @@ export const formSchema = z.object({
   interests: z.enum(["high-fashion", "street-fashion", "eco-fashion"], { 
     required_error: "Выберите ваш интерес" 
   }),
+  age: z.string().min(1, { message: "Пожалуйста, укажите возраст" }).optional(),
+  socialMedia: z.string().optional(),
+  dietaryRestrictions: z.string().optional(),
+  emergencyContact: z.string().optional(),
+  hearAboutUs: z.enum(["social-media", "friends", "advertisement", "other"], {
+    required_error: "Пожалуйста, укажите источник"
+  }).optional(),
+  newsletter: z.boolean().optional(),
   message: z.string().optional(),
 });
 
@@ -39,6 +48,11 @@ const RegistrationForm = ({ onSuccessfulSubmit }: RegistrationFormProps) => {
       fullName: "",
       email: "",
       phone: "",
+      age: "",
+      socialMedia: "",
+      dietaryRestrictions: "",
+      emergencyContact: "",
+      newsletter: false,
       message: "",
     },
   });
@@ -95,6 +109,39 @@ const RegistrationForm = ({ onSuccessfulSubmit }: RegistrationFormProps) => {
                 <FormControl>
                   <Input placeholder="+7 (999) 999-99-99" {...field} />
                 </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="age"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Возраст</FormLabel>
+                <FormControl>
+                  <Input placeholder="25" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="socialMedia"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Социальные сети</FormLabel>
+                <FormControl>
+                  <Input placeholder="@username" {...field} />
+                </FormControl>
+                <FormDescription>
+                  Укажите свой Instagram, TikTok или другие аккаунты
+                </FormDescription>
                 <FormMessage />
               </FormItem>
             )}
@@ -172,6 +219,86 @@ const RegistrationForm = ({ onSuccessfulSubmit }: RegistrationFormProps) => {
                 Выберите категорию, которая вас интересует больше всего
               </FormDescription>
               <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <div className="grid md:grid-cols-2 gap-6">
+          <FormField
+            control={form.control}
+            name="dietaryRestrictions"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Диетические ограничения</FormLabel>
+                <FormControl>
+                  <Input placeholder="Например: вегетарианец, безглютеновая диета" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+          
+          <FormField
+            control={form.control}
+            name="emergencyContact"
+            render={({ field }) => (
+              <FormItem>
+                <FormLabel>Контакт для экстренной связи</FormLabel>
+                <FormControl>
+                  <Input placeholder="Имя и номер телефона" {...field} />
+                </FormControl>
+                <FormMessage />
+              </FormItem>
+            )}
+          />
+        </div>
+
+        <FormField
+          control={form.control}
+          name="hearAboutUs"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Как вы узнали о нас?</FormLabel>
+              <Select
+                onValueChange={field.onChange}
+                defaultValue={field.value}
+              >
+                <FormControl>
+                  <SelectTrigger>
+                    <SelectValue placeholder="Выберите источник информации" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="social-media">Социальные сети</SelectItem>
+                  <SelectItem value="friends">От друзей</SelectItem>
+                  <SelectItem value="advertisement">Реклама</SelectItem>
+                  <SelectItem value="other">Другое</SelectItem>
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="newsletter"
+          render={({ field }) => (
+            <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md border p-4">
+              <FormControl>
+                <Checkbox
+                  checked={field.value}
+                  onCheckedChange={field.onChange}
+                />
+              </FormControl>
+              <div className="space-y-1 leading-none">
+                <FormLabel>
+                  Подписаться на новостную рассылку
+                </FormLabel>
+                <FormDescription>
+                  Получайте обновления о предстоящих мероприятиях и новостях индустрии
+                </FormDescription>
+              </div>
             </FormItem>
           )}
         />
